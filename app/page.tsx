@@ -1,15 +1,65 @@
-export default function Home(){
-  return(
-    <section className="flex flex-col justify-center items-center py-28  px-16  gap-12 min-h-screen box-border">
-        <div className="flex flex-col items-center gap-8 text-center">
-            <h1 className="m-0 font-bold text-[4.00rem] leading-[110%] text-[#000000]">INVOICE AUTO</h1>
-            <p className="m-0 font-medium text-2xl leading-[145%] text-black/[0.55]">ボタン1つで請求書発行・送信</p>
-        </div>
+export default function Home() {
+  return (
+    <main className="min-h-screen flex items-center justify-center px-4">
+      <section className="w-full max-w-[700px]">
+        <div
+          className="
+            flex flex-col items-center
+            gap-6
+            w-full
+            mx-auto
+          "
+        >
+          <h1
+            className="
+              w-full
+              text-center
+              font-bold
+              text-[36px]
+              leading-[110%]
+              tracking-[-0.02em]
+              text-black
+              md:text-[44px]
+              lg:text-[64px]
+            "
+          >
+            INVOICE AUTO
+          </h1>
 
-    <div className="flex flex-row flex-wrap items-center gap-4">
-        <button className="py-3  px-4  rounded-xl border border-gray-300 bg-black font-medium text-lg leading-[145%] text-[#ffffff]">ログイン</button>
-        <button className="py-3  px-4  rounded-xl border border-gray-300 font-medium text-lg leading-[145%] text-[#000000]">登録</button>
-    </div>
-    </section>
-  )
+          <p
+            className="
+              w-full
+              text-center
+              font-medium
+              text-[18px]
+              leading-[145%]
+              tracking-[-0.005em]
+              text-black/55
+              md:text-[22px]
+              lg:text-[24px]
+            "
+          >
+            ボタン1つで請求書発行・送信
+          </p>
+
+          <button
+            className="
+              flex items-center justify-center
+              gap-2
+              px-6 py-3
+              bg-black
+              text-white
+              rounded-xl
+              font-medium
+              mx-auto
+              hover:opacity-80
+              transition
+            "
+          >
+            Googleログイン
+          </button>
+        </div>
+      </section>
+    </main>
+  );
 }

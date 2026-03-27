@@ -1,65 +1,188 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export default function Home() {
     return (
-        <div>
-            <header className="flex flex-row justify-between items-center py-6 px-16 self-stretch">
-                <p className="font-black text-[3.50rem] leading-[110%] text-[#000000]">
-                INVOICE AUTO
+        <div className="min-h-screen flex flex-col">
+            <header
+                className="
+                flex flex-col gap-4
+                md:flex-row md:justify-between md:items-center
+                py-6 px-4 md:px-8 lg:px-16
+                "
+            >
+                <p
+                    className="
+                    font-black
+                    text-[2rem]
+                    md:text-[2.5rem]
+                    lg:text-[3.5rem]
+                    leading-[110%]
+                    text-black
+                    "
+                >
+                    INVOICE AUTO
                 </p>
-                <nav className="flex flex-row items-center gap-10">
-                <a href="#" className="font-medium text-base leading-[145%] text-center underline text-[#000000]">
-                    ダッシュボード
-                </a>
-                <a href="#" className="font-medium text-base leading-[145%] text-center underline text-[#000000]">
-                    請求書確認・送信
-                </a>
-                <a href="#" className="font-medium text-base leading-[145%] text-center underline text-[#000000]">
-                    詳細設定
-                </a>
-                <a href="#" className="font-medium text-base leading-[145%] text-center underline text-[#000000]">
-                    ログアウト
-                </a>
+
+                <nav
+                    className="
+                    hidden md:flex
+                    items-center
+                    gap-6 lg:gap-10
+                    "
+                >
+                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                        ダッシュボード
+                    </a>
+                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                        請求書確認・送信
+                    </a>
+                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                        詳細設定
+                    </a>
+                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                        ログアウト
+                    </a>
                 </nav>
             </header>
 
-            <header className="flex justify-between items-center py-3 px-16">
-                <p className="font-black text-4xl leading-[110%] text-[#000000]">
-                請求書確認・送信
+            <header className="px-4 md:px-8 lg:px-16 py-3">
+                <p
+                    className="
+                    font-black
+                    text-2xl md:text-3xl lg:text-4xl
+                    leading-[110%]
+                    text-black
+                    "
+                >
+                    請求書確認・送信
                 </p>
             </header>
 
-            <section className="flex flex-col items-center py-5 px-16 gap-8">
-                <article className="box-border flex items-center w-full max-w-[50rem] min-h-[12.13rem] rounded-2xl border border-gray-200">
-                <div className="flex flex-col justify-between items-start p-6 gap-[0.31rem] w-full">
-                    <div className="flex justify-between items-center gap-2 mb-3 w-full">
-                    <p className="font-bold text-2xl leading-[145%] text-[#000000]">
-                        2026年3月
-                    </p>
-                    <p className="font-bold text-4xl leading-[145%] text-[#000000]">
-                        ￥100,000
-                    </p>
+            <section
+                className="
+                flex flex-col items-center
+                py-5 px-4 md:px-8 lg:px-16
+                gap-6 md:gap-8
+                "
+            >
+                <article
+                    className="
+                    flex flex-col
+                    md:flex-row md:items-center
+                    w-full max-w-[50rem]
+                    rounded-2xl
+                    border border-gray-200
+                    overflow-hidden
+                    "
+                >
+                    <div
+                        className="
+                        flex flex-col
+                        justify-between
+                        p-5 md:p-6
+                        gap-2
+                        w-full
+                        "
+                    >
+                        <div
+                            className="
+                            flex flex-col gap-4
+                            items-baseline
+                            md:flex-row justify-between
+                            "
+                        >
+                            <p className="font-bold text-l md:text-2xl leading-[145%] text-black">
+                                2026年3月
+                            </p>
+
+                            <p
+                                className="
+                                font-bold
+                                text-2xl md:text-3xl lg:text-4xl
+                                leading-[145%]
+                                text-black
+                                "
+                            >
+                                ￥100,000
+                            </p>
+                        </div>
+
+                        <div
+                            className="
+                            flex flex-row gap-1
+                            md:flex-row md:gap-6
+                            "
+                        >
+                            <p className="font-medium text-base md:text-lg leading-[145%] text-black/55">
+                                案件数:10
+                            </p>
+                            <p className="font-medium text-base md:text-lg leading-[145%] text-black/55">
+                                交通費:￥10,000
+                            </p>
+                        </div>
+
+                        
+                        <div className="flex flex-row gap-5 mt-2">
+                            <a
+                                href="#"
+                                className="
+                                font-medium
+                                text-base md:text-lg
+                                leading-[145%]
+                                text-black
+                                underline
+                                "
+                            >
+                                メール送信 →
+                            </a>
+
+                            <a
+                                href="#"
+                                className="
+                                font-medium
+                                text-base md:text-lg
+                                leading-[145%]
+                                text-black
+                                underline
+                                "
+                            >
+                                明細確認（スプシ） →
+                            </a>
+                        </div>
                     </div>
-
-                    <div className="flex items-start gap-[1.13rem] mb-2">
-                    <p className="font-medium text-lg leading-[145%] text-black/55">
-                        案件数:10
-                    </p>
-                    <p className="font-medium text-lg leading-[145%] text-black/55">
-                        交通費:￥10,000
-                    </p>
-                    </div>
-
-                    <a href="#" className="font-medium text-lg leading-[145%] mt-1 text-[#000000]">
-                    メールを送信する →
-                    </a>
-
-                    <a href="#" className="font-medium text-lg leading-[145%] mt-1 text-[#000000]">
-                    スプレッドシートを見る →
-                    </a>
-                </div>
                 </article>
             </section>
+            
+            <footer className="
+                mt-auto
+                flex flex-col gap-6
+                px-4 py-10
+                md:flex-row md:items-center md:justify-between md:px-8 lg:px-16
+            ">
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-8">
+                    <p className="font-semibold text-lg md:text-xl leading-[145%] text-black">
+                        INVOICE AUTO
+                    </p>
+                    <p className="font-medium text-sm md:text-base leading-[145%] text-black/55">
+                        Support by sy13.exe@gmail.com
+                    </p>
+                </div>
+
+                <nav className="flex items-center gap-4">
+                    <a
+                        href="https://instagram.com"
+                        className="flex items-center justify-center"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/icon/Instagram_Glyph_Black.png"
+                            alt="Instagram"
+                            className="w-6 h-6"
+                        />
+                    </a>
+                </nav>
+            </footer>
         </div>
-    )
+    );
 }
