@@ -1,3 +1,6 @@
+import GoogleLoginButton from '@/components/GoogleLoginButton';
+
+
 export default function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center px-4">
@@ -41,23 +44,9 @@ export default function Home() {
           >
             ボタン1つで請求書発行・送信
           </p>
+          <div><GoogleLoginButton></GoogleLoginButton></div>
 
-          <button
-            className="
-              flex items-center justify-center
-              gap-2
-              px-6 py-3
-              bg-black
-              text-white
-              rounded-xl
-              font-medium
-              mx-auto
-              hover:opacity-80
-              transition
-            "
-          >
-            Googleログイン
-          </button>
+          
         </div>
       </section>
     </main>

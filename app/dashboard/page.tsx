@@ -3,24 +3,45 @@ import Image from "next/image";
 export default function Home() {
     return (
         <div className="min-h-screen">
-            <header className="flex flex-col gap-4 px-4 py-6 md:flex-row md:justify-between md:items-center md:px-8 lg:px-16">
-                <p className="font-black text-[2rem] leading-[110%] text-black md:text-[2.5rem] lg:text-[3.5rem]">
-                INVOICE AUTO
+            <header
+                className="
+                flex flex-col gap-4
+                md:flex-row md:justify-between md:items-center
+                py-6 px-4 md:px-8 lg:px-16
+                "
+            >
+                <p
+                    className="
+                    font-black
+                    text-[2rem]
+                    md:text-[2.5rem]
+                    lg:text-[3.5rem]
+                    leading-[110%]
+                    text-black
+                    "
+                >
+                    INVOICE AUTO
                 </p>
 
-                <nav className="hidden md:flex flex-row md:items-center md:gap-6 lg:gap-10">
-                <a href="/dashboard" className="text-sm md:text-base font-medium underline text-black">
-                    ダッシュボード
-                </a>
-                <a href="/invoices" className="text-sm md:text-base font-medium underline text-black">
-                    請求書確認・送信
-                </a>
-                <a href="registar" className="text-sm md:text-base font-medium underline text-black">
-                    詳細設定
-                </a>
-                <a href="#" className="text-sm md:text-base font-medium underline text-black">
-                    ログアウト
-                </a>
+                <nav
+                    className="
+                    flex flex-row md:flex
+                    items-center
+                    gap-2 lg:gap-10
+                    "
+                >
+                    <a href="/dashboard" className="font-medium text-xs md:text-base underline text-black">
+                        ダッシュボード
+                    </a>
+                    <a href="invoices" className="font-medium text-xs md:text-base underline text-black">
+                        請求書確認・送信
+                    </a>
+                    <a href="register" className="font-medium text-xs md:text-base underline text-black">
+                        詳細設定
+                    </a>
+                    <a href="#" className="font-medium text-xs md:text-base underline text-black">
+                        ログアウト
+                    </a>
                 </nav>
             </header>
 

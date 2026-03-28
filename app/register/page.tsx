@@ -25,21 +25,21 @@ export default function Home() {
 
                 <nav
                     className="
-                    hidden md:flex
+                    flex flex-row md:flex
                     items-center
-                    gap-6 lg:gap-10
+                    gap-2 lg:gap-10
                     "
                 >
-                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                    <a href="/dashboard" className="font-medium text-xs md:text-base underline text-black">
                         ダッシュボード
                     </a>
-                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                    <a href="invoices" className="font-medium text-xs md:text-base underline text-black">
                         請求書確認・送信
                     </a>
-                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                    <a href="register" className="font-medium text-xs md:text-base underline text-black">
                         詳細設定
                     </a>
-                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                    <a href="#" className="font-medium text-xs md:text-base underline text-black">
                         ログアウト
                     </a>
                 </nav>
@@ -112,7 +112,7 @@ export default function Home() {
 
                     <div className="flex flex-col gap-2">
                         <p className="text-base md:text-lg font-bold leading-[145%] text-black">
-                            必ず以下のボタンをクリックした後、
+                            必ずダウンロードボタンをクリックした後、
                             <span className="text-[#D32929]">「コピーを作成」</span>
                             してから使用してください！
                         </p>
@@ -123,25 +123,43 @@ export default function Home() {
                 </div>
             </div>
 
-            <a
-                href="https://docs.google.com/spreadsheets/d/1YSs-pRVAIgR310LRMrVVYWjU921zOcc1sT2gGNZRAs0/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                    mx-auto
-                    flex items-center justify-center
-                    w-full max-w-[280px]
-                    h-[48px] md:h-[56px]
-                    bg-[#010004]
-                    text-white
-                    rounded-full
-                    text-sm md:text-base
-                    hover:opacity-80
-                    transition
-                "
-            >
-                ダウンロード
-            </a>
+            <div className="flex flex-col items-center gap-4">
+                <a
+                    href="https://docs.google.com/spreadsheets/d/1YSs-pRVAIgR310LRMrVVYWjU921zOcc1sT2gGNZRAs0/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                        w-full max-w-[280px]
+                        h-[48px] md:h-[56px]
+                        flex items-center justify-center
+                        bg-white
+                        text-black
+                        border boder-black
+                        rounded-full
+                        text-sm md:text-base
+                        hover:opacity-80
+                        transition
+                    "
+                >
+                    ダウンロード
+                </a>
+
+                <button
+                    className="
+                        w-full max-w-[280px]
+                        h-[48px] md:h-[56px]
+                        flex items-center justify-center
+                        bg-[#010004]
+                        text-white
+                        rounded-full
+                        text-sm md:text-base
+                        hover:opacity-80
+                        transition
+                    "
+                >
+                    保存
+                </button>
+            </div>
         </div>
     )
 }

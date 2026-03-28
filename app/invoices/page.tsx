@@ -25,21 +25,21 @@ export default function Home() {
 
                 <nav
                     className="
-                    hidden md:flex
+                    flex flex-row md:flex
                     items-center
-                    gap-6 lg:gap-10
+                    gap-2 lg:gap-10
                     "
                 >
-                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                    <a href="/dashboard" className="font-medium text-xs md:text-base underline text-black">
                         ダッシュボード
                     </a>
-                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                    <a href="invoices" className="font-medium text-xs md:text-base underline text-black">
                         請求書確認・送信
                     </a>
-                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                    <a href="register" className="font-medium text-xs md:text-base underline text-black">
                         詳細設定
                     </a>
-                    <a href="#" className="font-medium text-sm md:text-base underline text-black">
+                    <a href="#" className="font-medium text-xs md:text-base underline text-black">
                         ログアウト
                     </a>
                 </nav>
@@ -152,7 +152,7 @@ export default function Home() {
                     </div>
                 </article>
             </section>
-            
+
             <footer className="
                 mt-auto
                 flex flex-col gap-6
