@@ -16,12 +16,13 @@ export default function GoogleLoginButton(){
                 mx-auto
                 hover:opacity-80
                 transition
+                cursor-pointer
             "
             onClick={() =>
                 supabase.auth.signInWithOAuth({
                     provider: 'google',
                     options: {
-                        redirectTo:'http://localhost:3000/auth/callback',
+                        redirectTo: 'http://localhost:3000/auth/callback',
                         scopes:`https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/spreadsheets`,
                         queryParams: {
                             access_type: 'offline',

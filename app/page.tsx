@@ -40,13 +40,12 @@ export default function Home() {
               text-black/55
               md:text-[22px]
               lg:text-[24px]
+              cursor-pointer
             "
           >
             ボタン1つで請求書発行・送信
           </p>
           <div><GoogleLoginButton></GoogleLoginButton></div>
-
-          
         </div>
       </section>
     </main>
