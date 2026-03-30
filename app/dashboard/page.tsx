@@ -1,6 +1,24 @@
+'use client'
 import Image from "next/image";
+import { useState, useEffect } from 'react'
+import { supabase } from '@/lib/supabase'
+
 
 export default function Home() {
+    
+    const loadCalcurateIncome = async() => {
+        
+    }
+    const calcurated_income = 10 //ロード関数実装後置き換え
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = today.getMonth() + 1
+    const day = today.getDate()
+
+    useEffect(() => {
+        //loadCalcurateIncome()
+    })
+
     return (
         <div className="min-h-screen">
             <header
@@ -65,10 +83,10 @@ export default function Home() {
                     <div className="flex flex-col justify-center gap-4 p-5 md:p-6">
                     <div className="flex flex-col gap-2">
                         <h2 className="m-0 font-bold text-xl leading-[145%] text-black md:text-2xl">
-                        今月の収入 ￥100,000
+                        今月の収入 ¥{calcurated_income ?? 0}
                         </h2>
                         <p className="m-0 font-medium text-base leading-[145%] text-black/55 md:text-lg">
-                        ◯月◯日までの収益
+                        {year}年{month}月{day}日までの収益
                         </p>
                     </div>
 

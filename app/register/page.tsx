@@ -8,9 +8,11 @@ import { supabase } from '@/lib/supabase'
 export default function Home() {
 
     const [sheetUrl,setSheetUrl] = useState("")
+    const [loading, setLoading] = useState(true)
 
     const handleSave = async() => {
         try{
+            setLoading(true)
             const{data:{user},error:userError} = await supabase.auth.getUser()
 
             if (userError || !user) {
@@ -41,6 +43,8 @@ export default function Home() {
             console.error(error)
             alert('通信エラーが発生しました')
         }
+        finally {
+        setLoading(false)}
     }
 
     const saveProfile = async () => {
@@ -68,26 +72,39 @@ export default function Home() {
     
 
     const loadSheetUrl = async () => {
-        const { data:userData } = await supabase.auth.getUser()
-        const user_id = userData.user?.id
-        const { data:profile, error} = await supabase
-        .from("profiles")
-        .select("settings_sheet_url")
-        .eq("id",user_id)
-        .single()
+        try {
+            const {
+                data: { user },
+                error: userError,
+            } = await supabase.auth.getUser()
 
-        if (error) {
-            console.error(error)
-            return
+            if (userError || !user) {
+                console.error('ユーザー取得失敗', userError)
+                return
+            }
+
+            const { data, error } = await supabase
+                .from('profiles')
+                .select('settings_sheet_url')
+                .eq('id', user.id)
+                .maybeSingle()
+
+            if (error) {
+                console.error('プロフィール取得失敗', error)
+                return
+            }
+
+            setSheetUrl(data?.settings_sheet_url ?? '')
+        } catch (error) {
+            console.error('通信エラー', error)
         }
-        setSheetUrl(profile.settings_sheet_url)
     }
 
     useEffect(() => {
         saveProfile()
         loadSheetUrl()
     }, [])
-    
+
     return (
         <div className="min-h-screen flex flex-col">
             <header
@@ -161,7 +178,7 @@ export default function Home() {
                         type="text"
                         value={sheetUrl}
                         onChange={(e) => setSheetUrl(e.target.value)}
-                        placeholder="例）https://docs.google.com/spreadsheets/d/..."
+                        placeholder={loading ? "読み込み中..." : "例）https://docs.google.com/..."}
                         className="
                             w-full h-10 md:h-11
                             px-3
