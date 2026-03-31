@@ -8,8 +8,8 @@ export default function Home() {
 
     const [totalAmount, setTotalAmount] = useState(0)
     const [sheetUrl, setSheetUrl] = useState("")
+    const [loading, setLoading] = useState(false)
 
-    const calcurated_income = 10 //ロード関数実装後置き換え
     const today = new Date()
     const year = today.getFullYear()
     const month = today.getMonth() + 1
@@ -18,8 +18,10 @@ export default function Home() {
     
 
     const loadCalcurateIncome = async () => {
+    setLoading(true) 
     const { data: profile } = await supabase.auth.getUser()
     const userId = profile?.user?.id
+    
 
     const res = await fetch('/api/calcurate-income', {
         method: "POST",
@@ -45,13 +47,8 @@ export default function Home() {
     
     setTotalAmount(data.totalAmount)
     setSheetUrl(data.sheetUrl)
+    setLoading(false)
 }
-
-    
-
-    useEffect(() => {
-    loadCalcurateIncome();
-    }, [])
 
     return (
         <div className="min-h-screen">
@@ -104,6 +101,22 @@ export default function Home() {
             </header>
 
             <main className="flex flex-col gap-6 px-4 py-5 md:px-8 lg:px-16">
+                <div className="flex w-full max-w-5xl mx-auto justify-end">
+                    <button
+                        type="button"
+                        onClick={loadCalcurateIncome}
+                        disabled={loading}
+                        className="
+                            rounded-full border border-gray-300 px-4 py-2 text-sm font-medium
+                            transition hover:bg-gray-100
+                            cursor-pointer
+                            disabled:cursor-not-allowed disabled:opacity-50
+                            disabled:hover:bg-transparent
+                            "
+                        >
+                        {loading ? '更新中...' : '収入更新'}
+                    </button>
+                </div>
                 <a 
                     href={sheetUrl || "#"} 
                     target="_blank" 
