@@ -23,7 +23,7 @@ export default function GoogleLoginButton(){
                     provider: 'google',
                     options: {
                         redirectTo: 'http://localhost:3000/auth/callback',
-                        scopes:`https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/spreadsheets`,
+                        scopes:`https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive`,
                         queryParams: {
                             access_type: 'offline',
                             prompt: 'consent'

@@ -5,19 +5,53 @@ import { supabase } from '@/lib/supabase'
 
 
 export default function Home() {
-    
-    const loadCalcurateIncome = async() => {
-        
-    }
+
+    const [totalAmount, setTotalAmount] = useState(0)
+    const [sheetUrl, setSheetUrl] = useState("")
+
     const calcurated_income = 10 //ロード関数実装後置き換え
     const today = new Date()
     const year = today.getFullYear()
     const month = today.getMonth() + 1
     const day = today.getDate()
+    
+    
+
+    const loadCalcurateIncome = async () => {
+    const { data: profile } = await supabase.auth.getUser()
+    const userId = profile?.user?.id
+
+    const res = await fetch('/api/calcurate-income', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userId,
+            yearMonth: `${year}-${String(month).padStart(2, "0")}`,
+        }),
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+        console.error(data.error)
+        return
+    }
+
+    console.log("合計金額:", data.totalAmount)
+    console.log("シートURL:", data.sheetUrl)
+
+    
+    setTotalAmount(data.totalAmount)
+    setSheetUrl(data.sheetUrl)
+}
+
+    
 
     useEffect(() => {
-        //loadCalcurateIncome()
-    })
+    loadCalcurateIncome();
+    }, [])
 
     return (
         <div className="min-h-screen">
@@ -70,7 +104,12 @@ export default function Home() {
             </header>
 
             <main className="flex flex-col gap-6 px-4 py-5 md:px-8 lg:px-16">
-                <a href="#" className="block w-full max-w-5xl mx-auto text-inherit">
+                <a 
+                    href={sheetUrl || "#"} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block w-full max-w-5xl mx-auto text-inherit"
+                >
                 <article className="flex flex-col overflow-hidden rounded-2xl border border-gray-200 md:flex-row">
                     <Image
                     className="h-[220px] w-full object-cover md:h-auto md:w-[160px] md:shrink-0"
@@ -83,7 +122,7 @@ export default function Home() {
                     <div className="flex flex-col justify-center gap-4 p-5 md:p-6">
                     <div className="flex flex-col gap-2">
                         <h2 className="m-0 font-bold text-xl leading-[145%] text-black md:text-2xl">
-                        今月の収入 ¥{calcurated_income ?? 0}
+                        今月の収入 ¥{(totalAmount ?? 0).toLocaleString()}
                         </h2>
                         <p className="m-0 font-medium text-base leading-[145%] text-black/55 md:text-lg">
                         {year}年{month}月{day}日までの収益
